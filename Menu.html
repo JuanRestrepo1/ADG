@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script> 
+    <style>
+        .btn-outline-volver{
+            margin: 15px 0; 
+            padding: 10px 20px; 
+            background-image: url(Image/ADG-removebg-preview.png); 
+            background-size: cover;
+            color: #ffffff;
+            width: 100px; 
+            height: 100px;
+            align-items: left;
+        }
+        .btn-outline-ordenar {
+            margin: 15px 0; 
+            padding: 10px 20px; 
+            border: 1px solid #ff0000; 
+            background-color: rgb(0, 0, 0); 
+            cursor: pointer; 
+            color: #ffffff;
+            width: 200px; 
+            height: 50px;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url(Image/backg.jpg);
+            margin: 0;
+            padding: 20px;
+            
+            
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #001aff;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            justify-content: center; 
+            padding: 20px;
+            align-items: center;   
+        }
+        .header {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 10px; 
+            flex-direction: column;
+        }
+        .plato {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            height: 250px; 
+        }
+        .plato img {
+            max-width: 150px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            height: 150px;
+        }
+        .plato h2 {
+            margin: 5px 0;
+            color: #ffffff;
+            text-align: center;
+        }
+        .plato p {
+            color: rgb(255, 255, 255);    
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">   
+        <a href="Ruta.html" button type="button" class="btn btn-outline-volver"> </button> </a>
+    </div>
+    
+
+    <H1>DESAYUNOS</H1>
+    <div class="container">
+        <div class="plato">
+            <img src="Image/Arepa con queso.png" alt="Arepas con queso">
+            <div>
+                <h2>Arepas con queso</h2>
+                <p>Arepas de maíz rellenas de queso fresco.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/huevos pericos.png" alt="Huevos pericos">
+            <div>
+                <h2>Huevos pericos</h2>
+                <p>Huevos revueltos con tomate, cebolla y cilantro, servidos con arepas.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/tamales.png" alt="Tamales">
+            <div>
+                <h2>Tamales</h2>
+                <p>Masa de maíz con carne (cerdo o pollo), verduras y especias, cocidos en hojas de plátano.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/calentado.png" alt="Calentado">
+            <div>
+                <h2>Calentado</h2>
+                <p>Arroz y frijoles mezclados, a menudo con huevo frito.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/changua.png" alt="Changua">
+            <div>
+                <h2>Changua</h2>
+                <p>Sopa de leche con huevo, cebolla y cilantro.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/bollos de yuca.png" alt="Bollos de yuca">
+            <div>
+                <h2>Bollos de yuca</h2>
+                <p>Masa de yuca cocida al vapor, servidos con suero costeño.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/empanadas.png" alt="Empanadas">
+            <div>
+                <h2>Empanadas</h2>
+                <p>Masa de maíz rellena de carne o pollo, fritas y acompañadas de ají.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/avena caliente.png" alt="Avena caliente">
+            <div>
+                <h2>Avena caliente</h2>
+                <p>Bebida de avena cocida con canela, leche y azúcar.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/buñuelos.png" alt="Buñuelos">
+            <div>
+                <h2>Buñuelos</h2>
+                <p>Bolitas de masa de queso fritas, crujientes por fuera y suaves por dentro.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/tostadas con guacamole.png" alt="Tostadas de aguacate">
+            <div>
+                <h2>Tostadas de aguacate</h2>
+                <p>Pan tostado con aguacate machacado, limón y sal, a menudo con huevo encima.</p>
+            </div>
+        </div>
+    </div>
+
+    <H1>PLATOS FUERTES</H1>
+    <div class="container">
+        <div class="plato">
+            <img src="Image/Sancocho.png" alt="Sancocho">
+            <div>
+                <h2>Sancocho</h2>
+                <p>Sopa espesa con carne (pollo, res o pescado), plátano y yuca.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/ajiaco.png" alt="Ajiaco">
+            <div>
+                <h2>Ajiaco</h2>
+                <p>Sopa de pollo con tres tipos de papa y guasca.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/bandeja paisa.png" alt="Bandeja paisa">
+            <div>
+                <h2>Bandeja paisa</h2>
+                <p>Frijoles, arroz, carne molida, chicharrón, plátano, huevo frito y arepa.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/Pescado frito.png" alt="Pescado frito">
+            <div>
+                <h2>Pescado frito</h2>
+                <p>Pescado entero frito, servido con arroz y ensalada.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/carne asada.png" alt="Carne asada">
+            <div>
+                <h2>Carne asada</h2>
+                <p>Carne de res asada a la parrilla, acompañada de yuca o papas.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/pollo al horno.png" alt="Pollo al horno">
+            <div>
+                <h2>Pollo al horno</h2>
+                <p>Pollo marinado y asado, servido con arroz o ensalada.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/arroz con pollo.png" alt="Arroz con pollo">
+            <div>
+                <h2>Arroz con pollo</h2>
+                <p>Arroz cocido con pollo, verduras y especias.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/lentajas guisadas.png" alt="Lentejas guisadas">
+            <div>
+                <h2>Lentejas guisadas</h2>
+                <p>Lentejas cocidas con cebolla, ajo y especias.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/Chuleta valluna.png" alt="Chuleta valluna">
+            <div>
+                <h2>Chuleta valluna</h2>
+                <p>Chuleta de cerdo empanizada y frita, servida con arroz y ensalada.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/pato en salsa.png" alt="Pato en salsa">
+            <div>
+                <h2>Pato en salsa</h2>
+                <p>Pato cocido en salsa a base de tomate y especias.</p>
+            </div>
+        </div>
+    </div>
+
+    <H1>PA'PICAR</H1>
+    <div class="container">
+        <div class="plato">
+            <img src="Image/Arepas de huevo.png" alt="Arepas de huevo">
+            <div>
+                <h2>Arepas de huevo</h2>
+                <p>Arepas fritas rellenas de huevo.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/patacones.png" alt="Patacones">
+            <div>
+                <h2>Patacones</h2>
+                <p>Plátano verde frito, crujiente, servido con hogao (salsa de tomate y cebolla).</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/chicharron.png" alt="Chicharrón">
+            <div>
+                <h2>Chicharrón</h2>
+                <p>Corte de cerdo frito, crujiente y jugoso.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/tequeños.png" alt="Tequeños">
+            <div>
+                <h2>Tequeños</h2>
+                <p>Palitos de queso envueltos en masa y fritos.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/platano maduro frito.png" alt="Plátano maduro frito">
+            <div>
+                <h2>Plátano maduro frito</h2>
+                <p>Plátano dulce frito, servido como acompañamiento.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/queso costeño.png" alt="Queso costeño">
+            <div>
+                <h2>Queso costeño</h2>
+                <p>Queso fresco y salado, perfecto para untar.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/hummus de garbanzos.png" alt="Hummus de garbanzos">
+            <div>
+                <h2>Hummus de garbanzos</h2>
+                <p>Puré de garbanzos con tahini, limón y ajo.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/mini arepas con guacamole.png" alt="Mini arepas con guacamole">
+            <div>
+                <h2>Mini arepas con guacamole</h2>
+                <p>Arepitas pequeñas servidas con guacamole.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/nachos con guacamole.png" alt="Nachos con guacamole">
+            <div>
+                <h2>Nachos con guacamole</h2>
+                <p>Totopos de maíz con guacamole y pico de gallo.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/tortilla de maiz con queso.png" alt="Tortilla de maíz con queso">
+            <div>
+                <h2>Tortilla de maíz con queso</h2>
+                <p>Tortilla caliente rellena de queso derretido.</p>
+            </div>
+        </div>
+    </div>
+
+    <H1>BEBIDAS</H1>
+    <div class="container">
+        <div class="plato">
+            <img src="Image/cafe colombiano.png" alt="Café colombiano">
+            <div>
+                <h2>Café colombiano</h2>
+                <p>Café fuerte y aromático, preparado con granos locales.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/chocolate caliente.png" alt="Chocolate caliente">
+            <div>
+                <h2>Chocolate caliente</h2>
+                <p>Chocolate derretido con leche, a menudo servido con pan.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/jugo de lulo.png" alt="Jugo de lulo">
+            <div>
+                <h2>Jugo de lulo</h2>
+                <p>Jugo refrescante de lulo, una fruta tropical.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/jugo de guanabana.png" alt="Jugo de guanábana">
+            <div>
+                <h2>Jugo de guanábana</h2>
+                <p>Jugo cremoso de guanábana, dulce y refrescante.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/agua de panela.png" alt="Agua de panela">
+            <div>
+                <h2>Agua de panela</h2>
+                <p>Agua caliente con panela disuelta, a veces con limón.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/refajo.png" alt="Refajo">
+            <div>
+                <h2>Refajo</h2>
+                <p>Mezcla de cerveza con aguardiente y un toque de soda.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/te de hierbas.png" alt="Té de hierbas">
+            <div>
+                <h2>Té de hierbas</h2>
+                <p>Infusión de hierbas como manzanilla o hierbabuena.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/smoothie de frutas tropicales.png" alt="Smoothie de frutas tropicales">
+            <div>
+                <h2>Smoothie de frutas tropicales</h2>
+                <p>Batido de frutas como mango, piña y papaya.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/limonada.png" alt="Limonada">
+            <div>
+                <h2>Limonada</h2>
+                <p>Jugo de limón fresco, agua y azúcar.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/agua panela fria.png" alt="Aguapanela fría">
+            <div>
+                <h2>Aguapanela fría</h2>
+                <p>Agua de panela fría con limón y hielo.</p>
+            </div>
+        </div>
+    </div>
+
+    <H1>LICORES</H1>
+    <div class="container">
+        <div class="plato">
+            <img src="Image/aguardiente.png" alt="Aguardiente">
+            <div>
+                <h2>Aguardiente</h2>
+                <p>Licor fuerte de caña de azúcar, típico en celebraciones.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/Ron colombiano.png" alt="Ron colombiano">
+            <div>
+                <h2>Ron colombiano</h2>
+                <p>Ron de caña de azúcar, ideal para cócteles.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/cerveza aguila.png" alt="Cerveza Águila">
+            <div>
+                <h2>Cerveza Águila</h2>
+                <p>Cerveza ligera y refrescante.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/cerveza club colombia.png" alt="Cerveza Club Colombia">
+            <div>
+                <h2>Cerveza Club Colombia</h2>
+                <p>Cerveza premium con un sabor más robusto.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/vino tinto.png" alt="Vino tinto">
+            <div>
+                <h2>Vino tinto</h2>
+                <p>Vino elaborado de uvas tintas, ideal para acompañar comidas.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/vino blanco.png" alt="Vino blanco">
+            <div>
+                <h2>Vino blanco</h2>
+                <p>Vino ligero, perfecto para maridar con pescados.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/coctel de maracuya.png" alt="Coctel de maracuyá">
+            <div>
+                <h2>Coctel de maracuyá</h2>
+                <p>Mezcla de maracuyá, ron y jugo de limón.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/mojito colombiano.png" alt="Mojito colombiano">
+            <div>
+                <h2>Mojito colombiano</h2>
+                <p>Ron, menta, azúcar, limón y soda.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/chicha.png" alt="Chicha">
+            <div>
+                <h2>Chicha</h2>
+                <p>Bebida fermentada a base de maíz, dulce y refrescante.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/guaro sour.png" alt="Guaro sour">
+            <div>
+                <h2>Guaro sour</h2>
+                <p>Cóctel de aguardiente con limón y jarabe.</p>
+            </div>
+        </div>
+    </div>
+    
+    <H1>POSTRES</H1>
+    <div class="container">
+        <div class="plato">
+            <img src="Image/tres leches.png" alt="Tres leches">
+            <div>
+                <h2>Tres leches</h2>
+                <p>Pastel empapado en tres tipos de leche (evaporada, condensada y crema).</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/arequipe.png" alt="Arequipe">
+            <div>
+                <h2>Arequipe</h2>
+                <p>Dulce de leche espeso, usado como untar o relleno.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/natilla.png" alt="Natilla">
+            <div>
+                <h2>Natilla</h2>
+                <p>Postre a base de leche, azúcar y canela, típico en Navidad.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/galletas de bocadillo.png" alt="Galletas de bocadillo">
+            <div>
+                <h2>Galletas de bocadillo</h2>
+                <p>Galletas hechas con pasta de guayaba.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/cocadas.png" alt="Cocadas">
+            <div>
+                <h2>Cocadas</h2>
+                <p>Dulces de coco rallado y azúcar, a veces con leche condensada.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/postre de natas.png" alt="Postre de natas">
+            <div>
+                <h2>Postre de natas</h2>
+                <p>Postre cremoso hecho con natas de leche y azúcar.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/dulce de guayaba.png" alt="Dulce de guayaba">
+            <div>
+                <h2>Dulce de guayaba</h2>
+                <p>Pasta de guayaba dulce, a menudo acompañada de queso.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/flan de coco.png" alt="Flan de coco">
+            <div>
+                <h2>Flan de coco</h2>
+                <p>Flan cremoso con sabor a coco.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/helado de frutas.png" alt="Helado de frutas">
+            <div>
+                <h2>Helado de frutas</h2>
+                <p>Helado hecho con frutas tropicales como mango o guanábana.</p>
+            </div>
+        </div>
+        <div class="plato">
+            <img src="Image/mermelada de guayaba.png" alt="Mermelada de guayaba">
+            <div>
+                <h2>Mermelada de guayaba</h2>
+                <p>Mermelada dulce hecha de guayaba, ideal para untar.</p>
+            </div>
+        </div>
+    </div>
+        <div class="header">
+            <a href="Pedido.html" button type="button" class="btn btn-outline-ordenar"> ORDENAR </button> </a>
+        </div>
+</body>
+</html>

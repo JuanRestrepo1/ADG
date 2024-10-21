@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script> 
+
+
+    <style>
+        body {
+            background-image: url(Image/backg.jpg) ;
+            color: #fff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgb(0, 0, 0);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 50%; 
+            max-width: 500px
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        .section input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+
+        .section button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .section button:hover {
+            background-color: #555;
+        }
+
+        .date-picker {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .date-picker .date {
+            background-color: #444;
+            padding: 5px;
+            border-radius: 5px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .date-picker .time {
+            background-color: #444;
+            padding: 5px;
+            border-radius: 5px;
+            color: #fff;
+            margin-right: 10px;
+        }
+        .btn-outline-reservar{
+            margin: 15px 0; 
+            padding: 10px 20px; 
+            background-image: url(Image/ADG-removebg-preview.png); 
+            background-size: cover;
+            color: #ff0000;
+            width: 100px; 
+            height: 100px;
+            align-items: center;
+        }
+        
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; 
+            max-width: 400px; 
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">   
+        <a href="Index.html" button type="button" class="btn btn-outline-reservar"> </button> </a>
+    </div>
+    </nav>
+
+    <div class="container">
+        <h1>Reservas</h1>
+        <form id="reservation-form">
+            <div class="section">
+                <h2>Invitados</h2>
+                <input type="number" id="guests" min="1" max="10" value="1">
+                <span class="error-message" id="guestsError"></span>
+            </div>
+            <div class="section">
+                <h2>Datos del cliente</h2> 
+                <input type="text" id="fullName" placeholder="Nombre completo" required>
+                <span class="error-message" id="fullNameError"></span>
+                <input type="tel" id="phoneNumber" placeholder="Número de teléfono" required>
+                <span class="error-message" id="phoneNumberError"></span>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <span class="error-message" id="emailError"></span>
+            </div>
+            <div class="section">
+                <h2>Fecha y Hora</h2>
+                <div class="date-picker">
+                    <input type="date" id="date" value="2022-01-01">
+                    <input type="time" id="time" value="12:00">
+                </div>
+            </div>
+            <button id="submit-btn">Reservar</button>
+        </form>
+        <div id="reservation-list"></div>
+
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">¡Tu mesa ha sido reservada! Te esperamos.</span>
+                <p id="confirmationMessage"></p> 
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const reservationForm = document.getElementById('reservation-form');
+        const guestsInput = document.getElementById('guests');
+        const fullNameInput = document.getElementById('fullName');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const emailInput = document.getElementById('email');
+        const guestsError = document.getElementById('guestsError');
+        const fullNameError = document.getElementById('fullNameError');
+        const phoneNumberError = document.getElementById('phoneNumberError');
+        const emailError = document.getElementById('emailError');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            let isValid = true;
+
+            if (guestsInput.value < 1 || guestsInput.value > 10) {
+                guestsError.textContent = "El número de invitados debe estar entre 1 y 10.";
+                isValid = false;
+            } else {
+                guestsError.textContent = "";
+            }
+
+            if (fullNameInput.value.trim() === "") {
+                fullNameError.textContent = "Por favor, ingresa tu nombre completo.";
+                isValid = false;
+            } else {
+                fullNameError.textContent = "";
+            }
+
+            if (phoneNumberInput.value.trim() === "") {
+                phoneNumberError.textContent = "Por favor, ingresa tu número de teléfono.";
+                isValid = false;
+            } else {
+                phoneNumberError.textContent = "";
+            }
+
+            if (emailInput.value.trim() === "") {
+                emailError.textContent = "Por favor, ingresa tu correo electrónico.";
+                isValid = false;
+            } else {
+                emailError.textContent = "";
+            }
+
+            if (!isValid) {
+                return; 
+            }
+
+            const guests = parseInt(guestsInput.value);
+            const fullName = fullNameInput.value;
+            const phoneNumber = phoneNumberInput.value;
+            const email = emailInput.value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            const reservationData = {
+                guests,
+                fullName,
+                phoneNumber,
+                email,
+                date,
+                time
+            };
+
+            fetch('/guardar-reserva', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reservationData)
+            })
+            .then(response => {
+                if (response.ok) {
+
+                    openModal("¡Tu mesa ha sido reservada! Te esperamos.");
+                    reservationForm.reset(); 
+                } else {
+                    
+                    return response.json()
+                        .then(error => {
+                            openModal("Error al guardar la reserva: " + error.message);
+                        });
+                }
+            })
+            .catch(error => {
+               
+                openModal("Error de conexión al servidor.");
+            });
+        });
+
+        function openModal(message) {
+            document.getElementById("confirmationModal").style.display = "block";
+            document.getElementById("confirmationMessage").textContent = message; 
+        }
+        
+        function closeModal() {
+            document.getElementById("confirmationModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

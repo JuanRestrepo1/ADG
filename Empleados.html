@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script> 
+
+    <style>
+        body {
+            background-image: url(Image/backg.jpg);
+            color: #fff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 50%; 
+            max-width: 500px; 
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .section input[type="number"],
+        .section input[type="text"],
+        .section input[type="id"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 10px; 
+        }
+
+        .section button {
+            padding: 10px 20px; 
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+            width: 100%; 
+            margin-bottom: 20px; 
+        }
+
+        .section button:hover {
+            background-color: #555;
+        }
+
+        .btn-volver {
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-image: url(Image/ADG-removebg-preview.png);
+            background-size: cover;
+            cursor: pointer;
+            color: #ffffff;
+            width: 100px;
+            height: 100px;
+        }
+
+        h1, h2 {
+            text-align: center; 
+            margin-bottom: 10px; 
+        }
+
+        .menu-section {
+            width: 100%; 
+            margin-bottom: 20px; 
+        }
+
+        .menu-section select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="Index.html" button type="button" class="btn-volver"> </button> </a>
+    </div>
+
+    <div class="container">
+        <h1>Iniciar sesión</h1>
+
+        <div class="menu-section">
+            <h2>Selecciona tu cargo:</h2>
+            <select id="plato">
+                <option value="Propietario"> Propietario </option>
+                <option value="Gerente"> Gerente </option>
+                <option value="Mesero"> Mesero </option>
+            </select>
+        </div>
+
+        <form id="order-form">
+            <div class="section">
+                <h2>Datos del empleado</h2>
+                <input type="text" id="fullName" placeholder="Nombre completo" required>
+                <input type="id" id="idnumber" placeholder="Cédula" required>
+            </div>
+        </form>
+
+        <button id="submit-order-btn">Ingresar</button>
+
+        <div id="error-message" style="color: red; text-align: center; margin-top: 10px;"></div> 
+    </div>
+
+    <script>
+        
+        const submitButton = document.getElementById('submit-order-btn');
+        const cargoSelect = document.getElementById('plato');
+        const errorMessage = document.getElementById('error-message'); 
+
+        
+        submitButton.addEventListener('click', (event) => {
+            event.preventDefault(); 
+
+            
+            const selectedCargo = cargoSelect.value;
+
+            
+            const fullName = document.getElementById('fullName').value;
+            const idnumber = document.getElementById('idnumber').value;
+            if (fullName === "" || idnumber === "") {
+                errorMessage.textContent = "Por favor, completa todos los campos.";
+                return;
+            }
+
+            
+            switch (selectedCargo) {
+                case 'Propietario':
+                    window.location.href = 'Rgstpdct.html'; 
+                    break;
+                case 'Gerente':
+                    window.location.href = 'Rgstpdct.html'; 
+                    break;
+                case 'Mesero':
+                    window.location.href = 'Ruta.html'; 
+                    break;
+                default:
+                    
+                    errorMessage.textContent = 'Cargo inválido.'; 
+                    break;
+            }
+        });
+    </script>
+
+</body>
+</html>
