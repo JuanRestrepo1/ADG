@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/PedidoPrueba.css">
+</head>
+<body>
+    <div class="header">   
+        <a href="Menu.html" button type="button" class="btn btn-outline-volver"> </button> </a>
+    </div>
+
+    <div class=" container">
+        <form action="/post" method="post">
+            <label for="name">Nombre Completo : </label>
+            <input type="text" id="name" name="name">
+            <label for="no_mesa">Numero de mesa : </label>
+            <input type="text" id="no_mesa" name="no_mesa">
+            <label for="slct_plato">Selcciona un Plato : </label>
+            <select name="slct_plato" id="slct_plato">
+                <option value="Ninguno">Ninguno</option>
+                    <option value="Arepa con queso">Desayuno: Arepa con queso </option>
+                    <option value="Huevos pericos">Desayuno: Huevos pericos </option>
+                    <option value="Tamales">Desayuno: Tamales </option>
+                    <option value="Calentado">Desayuno: Calentado </option>
+                    <option value="Changua">Desayuno: Changua </option>
+                    <option value="Bollos de yuca">Desayuno: Bollos de yuca </option>
+                    <option value="Empanada">Desayuno: Empanada </option>
+                    <option value="Avena caliente">Desayuno: Avena caliente </option>
+                    <option value="Buñuelos">Desayuno: Buñuelos </option>
+                    <option value="Tostadas de aguacate">Desayuno: Tostadas de aguacate </option>
+                    <option value="Sancocho">Plato Fuerte: Sancocho </option>
+                    <option value="Ajiaco">Plato Fuerte: Ajiaco </option>
+                    <option value="Bandeja paisa">Plato Fuerte: Bandeja paisa </option>
+                    <option value="Pescado frito">Plato Fuerte: Pescado frito </option>
+                    <option value="Carne asada">Plato Fuerte: Carne asada </option>
+                    <option value="Pollo al horno">Plato Fuerte: Pollo al horno </option>
+                    <option value="Arroz con pollo">Plato Fuerte: Arroz con pollo </option>
+                    <option value="Lentejas guisadas">Plato Fuerte: Lentejas guisadas </option>
+                    <option value="Chuleta valluna">Plato Fuerte: Chuleta valluna </option>
+                    <option value="Pato en salsa">Plato Fuerte: Pato en salsa </option>
+            </select>
+
+            <label for="slct_bebida">Selcciona una Bebida/Licor : </label>
+            <select name="slct_bebida" id="slct_bebida">
+                <option value="Ninguno">Ninguno</option>
+                    <option value="Café colombiano">Bebida: Café colombiano</option>
+                    <option value="Chocolate caliente">Bebida: Chocolate caliente</option>
+                    <option value="Jugo de lulo">Bebida: Jugo de lulo</option>
+                    <option value="Jugo de guanabana">Bebida: Jugo de guanabana</option>
+                    <option value="Agua de panela">Bebida: Agua de panela</option>
+                    <option value="Refajo">Bebida: Refajo</option>
+                    <option value="Té de hierbas">Bebida: Té de hierbas</option>
+                    <option value="Smoothie de frutas">Bebida: Smoothie de frutas</option>
+                    <option value="Limonada">Bebida: Limonada</option>
+                    <option value="Agua de panela Fria">Bebida: Agua de panela Fria</option>
+                    <option value="Aguardiente">Licor: Aguardiente</option>
+                    <option value="Ron colombiano">Licor: Ron colombiano</option>
+                    <option value="Cerveza Aguila">Licor: Cerveza Aguila</option>
+                    <option value="Cerveza club colombia">Licor: Cerveza club colombia</option>
+                    <option value="Vino tinto">Licor: Vino tinto</option>
+                    <option value="Vino blanco">Licor: Vino blanco</option>
+                    <option value="Cóctel de maracuya">Licor: Cóctel de maracuya</option>
+                    <option value="Mojito colombiano">Licor: Mojito colombiano</option>
+                    <option value="Chicha">Licor: Chicha</option>
+                    <option value="Guaro sour">Licor: Guaro sour</option>
+            </select>
+
+            <label for="slct_postre">Selcciona una Aperitivo/Postre : </label>
+            <select name="slct_postre" id="slct_postre">
+                <option value="Ninguno">Ninguno</option>
+                    <option value="Tres leches">Postre: Tres leches</option>
+                    <option value="Arequipe">Postre: Arequipe</option>
+                    <option value="Natilla">Postre: Natilla</option>
+                    <option value="Galletas de bocadillo">Postre: Galletas de bocadillo</option>
+                    <option value="Cocadas">Postre: Cocadas</option>
+                    <option value="Postre de natas">Postre: Postre de natas</option>
+                    <option value="Dulce de guayaba">Postre: Dulce de guayaba</option>
+                    <option value="Flan de coco">Postre: Flan de coco</option>
+                    <option value="Helado de frutas">Postre: Helado de frutas</option>
+                    <option value="Mermelada de guayaba">Postre: Mermelada de guayaba</option>
+                    <option value="Arepas de huevo">Aperitivo: Arepas de huevo</option>
+                    <option value="Patacones">Aperitivo: Patacones</option>
+                    <option value="Chicharron">Aperitivo: Chicharron</option>
+                    <option value="Tequeños">Aperitivo: Tequeños</option>
+                    <option value="Platano maduro frito">Aperitivo: Platano maduro frito</option>
+                    <option value="Queso costeño">Aperitivo: Queso costeño</option>
+                    <option value="Hummus de garbanzos">Aperitivo: Hummus de garbanzos</option>
+                    <option value="Mini arepas con guacamole">Aperitivo: Mini arepas con guacamole</option>
+                    <option value="Nachos con guacamole">Aperitivo: Nachos con guacamole</option>
+                    <option value="Tortillas de maiz con queso">Aperitivo: Tortillas de maiz con queso</option>
+            </select>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" min="1" max="15" value="1">
+            </select>
+
+            <button type="submit">Ordenar</button>
+        </form>
+    </div>
+</body>
+</html>

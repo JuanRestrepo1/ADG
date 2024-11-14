@@ -86,22 +86,41 @@
             color: red;
             margin-bottom: 10px;
         }
+
+        .btn-outline-volver{
+            margin: 15px 0; 
+            padding: 10px 10px;  
+            background-image: url(Image/ADG-removebg-preview.png); 
+            background-size: cover;
+            color: #ffffff;
+            width: 100px; 
+            height: 100px;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
     </style>
 </head>
 <body>
+    <div class="header">   
+        <a href="Empleados.html" button type="button" class="btn btn-outline-volver"> </button> </a>
+    </div>
 
     <div class="container">
         <h1>INGREDIENTES</h1>
 
-        <div class="form-container" id="productForm">
+        <form id="ingredientForm">
             <h2>Agregar Ingrediente</h2>
+            <input type="hidden" id="editId">  
             <label for="name">Nombre:</label>
-            <input type="text" id="name" placeholder="Nombre del Ingrediente">
+            <input type="text" id="name" name="name" placeholder="Nombre del Ingrediente" required>
             <label for="price">Precio:</label>
-            <input type="number" id="price" placeholder="Precio del Ingrediente">
-            <button id="addProductBtn">Agregar</button>
+            <input type="number" id="price" name="price" placeholder="Precio del Ingrediente" required>
+            <button type="submit">Guardar</button> 
             <div class="error" id="error"></div>
-        </div>
+        </form>
 
         <div id="productList">
             <h2>Lista de Ingredientes</h2>
@@ -122,117 +141,127 @@
     </div>
 
     <script>
-        let productos = []; 
-
         
-        function addProduct() {
+        const ingredientForm = document.getElementById('ingredientForm');
+        const productTable = document.getElementById('productTable');
+        const errorDiv = document.getElementById('error');
+        const editIdInput = document.getElementById('editId'); 
+
+        ingredientForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); 
+
             const name = document.getElementById('name').value;
             const price = document.getElementById('price').value;
+            const editId = editIdInput.value; 
 
-            
-            if (name === "" || price === "") {
-                document.getElementById('error').textContent = "Por favor, completa todos los campos.";
-                return;
+            const data = { name, price };
+            let method = 'POST';
+            let url = '/api/ingredients';
+
+            if (editId) { 
+                method = 'PUT';
+                url = `/api/ingredients/${editId}`;
             }
 
-            
-            const newProduct = {
-                id: productos.length > 0 ? productos[productos.length - 1].id + 1 : 1,
-                name: name,
-                price: price
-            };
-            productos.push(newProduct);
+            try {
+                const response = await fetch(url, { 
+                    method: method, 
+                    headers: { 
+                        'Content-Type': 'application/json' 
+                    },
+                    body: JSON.stringify(data) 
+                });
 
-            
-            document.getElementById('name').value = "";
-            document.getElementById('price').value = "";
-            document.getElementById('error').textContent = "";
-
-            
-            updateProductTable();
-        }
-
-        
-        function updateProductTable() {
-            const tbody = document.getElementById('productTable').getElementsByTagName('tbody')[0];
-            tbody.innerHTML = ''; 
-
-            productos.forEach(product => {
-                const row = tbody.insertRow();
-                const idCell = row.insertCell();
-                const nameCell = row.insertCell();
-                const priceCell = row.insertCell();
-                const actionCell = row.insertCell();
-
-                idCell.textContent = product.id;
-                nameCell.textContent = product.name;
-                priceCell.textContent = product.price;
-
-                
-                actionCell.innerHTML = `
-                    <button onclick="editProduct(${product.id})">Editar</button>
-                    <button onclick="deleteProduct(${product.id})">Eliminar</button>
-                `;
-            });
-        }
-
-        
-        function editProduct(id) {
-            
-            const product = productos.find(p => p.id === id);
-            if (product) {
-                
-                document.getElementById('name').value = product.name;
-                document.getElementById('price').value = product.price;
-
-                
-                document.getElementById('addProductBtn').textContent = "Editar";
-                document.getElementById('addProductBtn').onclick = () => updateProduct(id); 
+                if (response.ok) {
+                    const newIngredient = await response.json();
+                    displayIngredients();
+                    ingredientForm.reset(); 
+                    editIdInput.value = ''; 
+                    errorDiv.textContent = ""; 
+                } else {
+                    const error = await response.json();
+                    errorDiv.textContent = error.message || "Error al guardar/actualizar el ingrediente.";
+                }
+            } catch (error) {
+                errorDiv.textContent = "Error de conexión al servidor.";
             }
-        }
+        });
 
         
-        function updateProduct(id) {
-            const name = document.getElementById('name').value;
-            const price = document.getElementById('price').value;
+        async function displayIngredients() {
+            try {
+                const response = await fetch('/api/ingredients'); 
+                if (response.ok) {
+                    const ingredients = await response.json();
+                    productTable.querySelector('tbody').innerHTML = '';
+                    ingredients.forEach(ingredient => {
+                        const row = productTable.querySelector('tbody').insertRow();
+                        const idCell = row.insertCell();
+                        const nameCell = row.insertCell();
+                        const priceCell = row.insertCell();
+                        const actionCell = row.insertCell();
 
-            
-            const productIndex = productos.findIndex(p => p.id === id);
-            if (productIndex !== -1) {
-                productos[productIndex].name = name;
-                productos[productIndex].price = price;
-
-                
-                document.getElementById('name').value = "";
-                document.getElementById('price').value = "";
-
-                
-                document.getElementById('addProductBtn').textContent = "Agregar";
-                document.getElementById('addProductBtn').onclick = addProduct;
-
-                updateProductTable();
+                        idCell.textContent = ingredient._id; 
+                        nameCell.textContent = ingredient.name;
+                        priceCell.textContent = ingredient.price;
+                        actionCell.innerHTML = `
+                            <button onclick="editIngredient(${ingredient._id})">Editar</button> 
+                            <button onclick="deleteIngredient(${ingredient._id})">Eliminar</button> 
+                        `;
+                    });
+                } else {
+                    errorDiv.textContent = "Error al obtener los ingredientes.";
+                }
+            } catch (error) {
+                errorDiv.textContent = "Error de conexión al servidor.";
             }
         }
 
         
-        function deleteProduct(id) {
-            
-            if (confirm("¿Seguro que quieres eliminar este producto?")) {
-                
-                productos = productos.filter(p => p.id !== id);
-                
-                updateProductTable();
+        async function deleteIngredient(id) {
+            if (confirm("¿Seguro que quieres eliminar este ingrediente?")) {
+                try {
+                    const response = await fetch(`/api/ingredients/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        displayIngredients();
+                        errorDiv.textContent = "";
+                    } else {
+                        const error = await response.json();
+                        errorDiv.textContent = error.message || "Error al eliminar el ingrediente.";
+                    }
+                } catch (error) {
+                    errorDiv.textContent = "Error de conexión al servidor.";
+                }
             }
         }
 
         
-        const addProductBtn = document.getElementById('addProductBtn');
+        function editIngredient(id) {
+            editIdInput.value = id;  
+            const nameInput = document.getElementById('name');
+            const priceInput = document.getElementById('price');
+
+            fetch(`/api/ingredients/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al obtener el ingrediente'); 
+                    }
+                    return response.json();
+                })
+                .then(ingredient => {
+                    nameInput.value = ingredient.name;
+                    priceInput.value = ingredient.price;
+                })
+                .catch(error => {
+                    errorDiv.textContent = error.message;
+                });
+        }
 
         
-        addProductBtn.addEventListener('click', addProduct);
-
-        
-        updateProductTable();
+        displayIngredients();
     </script>
 </body>
 </html>

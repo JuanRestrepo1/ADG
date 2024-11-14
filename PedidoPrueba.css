@@ -1,0 +1,62 @@
+         body {
+            background-image: url(Image/backg.jpg) ;
+            color: #fff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+        }
+        .container {
+            padding: 10px;
+            max-width: 500px;
+            margin: 100px auto;
+            background-color: black;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #fff;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+        }
+        .btn-outline-volver{
+            margin: 15px 0; 
+            padding: 10px 10px;  
+            background-image: url(Image/ADG-removebg-preview.png); 
+            background-size: cover;
+            color: #ffffff;
+            width: 100px; 
+            height: 100px;
+            align-items: center;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        form label{
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        form input{
+            padding: 8px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+        form select{
+            padding: 8px;
+        }
+        form button{
+            padding: 8px;
+            background-color: red;
+            border: none;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 25px;
+            color: #fff;
+        }
